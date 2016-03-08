@@ -2,6 +2,7 @@ gulp = require 'gulp'
 coffee = require 'gulp-coffee'
 sass = require 'gulp-sass'
 plumber = require 'gulp-plumber'
+concat = require 'gulp-concat'
 webserver = require 'gulp-webserver'
 
 gulp.task 'html', ->
@@ -11,6 +12,7 @@ gulp.task 'html', ->
 gulp.task 'js', ->
     gulp.src './src/assets/_coffee/*.coffee'
     .pipe plumber()
+    .pipe concat 'all.coffee'
     .pipe coffee()
     .pipe gulp.dest './dest/assets/js'
     .pipe gulp.dest './src/assets/js'
